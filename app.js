@@ -57,6 +57,15 @@ function displayFriends() {
         // use renderFriend to make a friendEl
         const friendEl = renderFriend(friend);
 
+        friendEl.addEventListener('click', () => {
+            if (friend.satisfaction < 3 && mushroomCount > 0) {
+                friend.satisfaction++;
+                mushroomCount--;
+            }
+            displayFriends();
+            displayMushrooms();
+        });
+
         friendsEl.append(friendEl);
     }
 }
